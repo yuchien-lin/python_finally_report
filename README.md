@@ -19,7 +19,6 @@
 import yfinance as yf
 class stock_data:
      def __init__(self,stcok_name,start_date,end_date):
-         def __init__(self,stcok_name,start_date,end_date):
         all_data = yf.download(stcok_name,start_date,end_date)                      #利用套件獲得股票所有資訊
         all_data.reset_index(inplace=True)                                          #將日期從index轉成一欄的值
         self.stock_data_collect = {"date":[] ,"close_price": [] }                   #創建一個字典屬性在此class
