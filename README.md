@@ -105,12 +105,12 @@ def show_stock_chart(data,all_price,all_stock_name,data_num):  # 傳入資料
     plt.ylabel("Close Price")          # 設置Y標籤
 
     for order in range (data_num):
-        plt.scatter(date, all_price[order], s = 2, marker = 'o', label=all_stock_name[order])   #畫散布圖 點的大小設為2
+        plt.scatter(date, all_price[order], s = 2, marker = 'o', label=all_stock_name[order])#畫散布圖 點的大小設為2
         everyday_order = np.array([x for x in range(len(date))])
         price = np.array(all_price[order])
-        coeffs = np.polyfit(everyday_order, price, 1)                                 # 一次回歸，返回斜率和截距
+        coeffs = np.polyfit(everyday_order, price, 1)                                        # 一次回歸，返回斜率和截距
         regression_line = coeffs[0] * everyday_order + coeffs[1]  # y = mx + b
-        plt.plot(date, regression_line, linestyle='-',linewidth=7, alpha=0.4)         # 繪製回歸線
+        plt.plot(date, regression_line, linestyle='-',linewidth=7, alpha=0.4)                # 繪製回歸線
 
     # 設圖例邊框、圖例背景為白色、圖例邊框為黑色、字體大小
     plt.legend(loc='upper right', frameon=True, facecolor='white', edgecolor='black', fontsize=8)
@@ -194,10 +194,10 @@ class stock_integrate():
 ```
 
 ```
-    def get_pearson_correlation(self,stock1_name,stock2_name):   # 獲得兩個股票的pearson的值
-        stock1_index = -1                            # 用來找股票名稱對應的收盤價存在哪個index
+    def get_pearson_correlation(self,stock1_name,stock2_name):      # 獲得兩個股票的pearson的值
+        stock1_index = -1                                           # 用來找股票名稱對應的收盤價存在哪個index
         stock2_index = -1
-        for name_order in range(self.stock_num):     # 遍布每一個名字來尋找
+        for name_order in range(self.stock_num):                    # 遍布每一個名字來尋找
             if(self.all_stock_name[name_order] == stock1_name):     # 相同名稱就將位置存起來
                 stock1_index = name_order
             elif(self.all_stock_name[name_order] == stock2_name):
@@ -217,10 +217,10 @@ class stock_integrate():
 ```
 
 ```                                                                                                
-   def get_dtw_distance(self,stock1_name,stock2_name):  # 獲得兩個股票的pearson的值
-        stock1_index = -1                           # 用來找股票名稱對應的收盤價存在哪個index
+   def get_dtw_distance(self,stock1_name,stock2_name):          # 獲得兩個股票的pearson的值
+        stock1_index = -1                                       # 用來找股票名稱對應的收盤價存在哪個index
         stock2_index = -1
-        for name_order in range(self.stock_num):    # 遍布每一個名字來尋找
+        for name_order in range(self.stock_num):                # 遍布每一個名字來尋找
             if(self.all_stock_name[name_order] == stock1_name): # 相同名稱就將位置存起來
                 stock1_index = name_order
             elif(self.all_stock_name[name_order] == stock2_name):
