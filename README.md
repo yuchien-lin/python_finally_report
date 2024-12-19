@@ -132,6 +132,7 @@ import trend_comparison
 import visualization
 import csv
 ```
+初始化class所創建的object
 ```python
 class stock_integrate():
     def __init__(self,stcok_name,start_date,end_date):             #初始化此object
@@ -156,7 +157,7 @@ class stock_integrate():
         self.min_dtw_distance = []                                 # 將最小dtw的兩個股票名稱存為此class屬性
         self.max_min_dtw_value = [0,2**31]                         # 將最大及最小dtw的數值存為此class屬性，前者為最大後者為最小
 ```
-
+增加股票的方法
 ```python
     def add_stock(self,stcok_name):            # 輸入名稱增加股票
         new_stock_data = data_processor.stock_data(stcok_name,self.start_date,self.end_date)
@@ -187,12 +188,12 @@ class stock_integrate():
           compare.append(dtw_value)                                 # 將兩個股票的dtw加進list裡面   
           self.similarities_matrix.append(compare)                  # 將這兩個股票的關係存進class的similarities_matrix屬性
 ```
-
+畫出散布圖的方法
 ```python
     def show_stock_chart(self):                        # 展示股價的散布點圖
         visualization.show_stock_chart(self.stock_date,self.all_stock_price,self.all_stock_name,self.stock_num)
 ```
-
+得到pearson correlation的方法
 ```python
     def get_pearson_correlation(self,stock1_name,stock2_name):      # 獲得兩個股票的pearson的值
         stock1_index = -1                                           # 用來找股票名稱對應的收盤價存在哪個index
@@ -215,7 +216,7 @@ class stock_integrate():
         #透過trend_comparison內的pearson_correlation來獲得pearson的值
         return round(pearson_val,3)
 ```
-
+得到dtw distance的方法
 ```python                                                                                           
    def get_dtw_distance(self,stock1_name,stock2_name):          # 獲得兩個股票的pearson的值
         stock1_index = -1                                       # 用來找股票名稱對應的收盤價存在哪個index
@@ -237,7 +238,7 @@ class stock_integrate():
         dtw_value = trend_comparison.dtw_distance(self.all_stock_price[stock1_index][:50],self.all_stock_price[stock2_index])
         return round(dtw_value,3)
 ```
-
+印出所有股票互相的 pearson correlation 以及 dtw distance 並印出pearson及dtw最大最小的值
 ```python
     def print_similarities_matrix(self):        #印出pearson及dtw最大最小的值
         for row in self.similarities_matrix:
@@ -247,7 +248,7 @@ class stock_integrate():
         print("max dtw distance is",self.max_dtw_distance[0],"and",self.max_dtw_distance[1],self.max_min_dtw_value[0])
         print("min dtw distance is",self.min_dtw_distance[0],"and",self.min_dtw_distance[1],self.max_min_dtw_value[1])
 ```
-
+將所有股票互相的 pearson correlation 以及 dtw distance 並印出pearson及dtw最大最小的值寫成csv檔
 ```python
     def create_similarities_csv(self):         #將每一個比較的結果輸出成csv檔出去
         with open('similarities.csv', 'w', newline='') as csvfile:
