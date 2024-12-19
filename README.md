@@ -12,10 +12,10 @@
 
 > ### 資料抓取
 從yahoo財經擷取股票資料
-```
+```python
 !pip install yfinance
 ```
-```
+```python
 import yfinance as yf
 class stock_data:
      def __init__(self,stcok_name,start_date,end_date):
@@ -32,13 +32,13 @@ class stock_data:
 - 驗證兩個標的之間的線性關係。常以r表示，且-１< r < 1 。
 - | r | 越大，兩者相關程度越高；正負代表關係方向(類似斜率)
 
-```
+```python
 import numpy as np  #用來進行數值運算
 def pearson_correlation(data1,data2):
   n=len(data1)
 ```
 計算相關數值
-```
+```python
   #計算平均數
   mean_data1 = sum(data1) / n
   mean_data2 = sum(data2) / n
@@ -50,7 +50,7 @@ def pearson_correlation(data1,data2):
   z_data2 = [(data2[i] - mean_data2) / std_data2 for i in range(n)]
 ```
 計算pearson correlation
-```
+```python
   pearson=sum(z_data1[i] * z_data2[i] for i in range(n)) / n
   #若分母為零，表示兩者無變異，即pearson相關係數為0
   if std_data1 == 0 or std_data2 == 0:
@@ -64,7 +64,7 @@ def pearson_correlation(data1,data2):
 - 計算得出的結果越小，表示兩者趨勢越相似。
 
 
-```
+```python
 def euclidean_distance(a, b):                               #計算歐氏距離
   return np.abs(a - b)                                      #兩值相減的絕對值->創建矩陣距離，所以euclidean_distance()是距離矩陣
 
@@ -95,7 +95,7 @@ def dtw_distance(data1, data2):                             #計算DTW距離
 
 > ### 散佈圖繪製
 
-```
+```python
 import matplotlib.pyplot as plt
 
 def show_stock_chart(data,all_price,all_stock_name,data_num):  # 傳入資料
@@ -119,7 +119,7 @@ def show_stock_chart(data,all_price,all_stock_name,data_num):  # 傳入資料
 ```
 
 > ### 實際應用
-```
+```python
 !pip install import-ipynb
 import import_ipynb
 ```
@@ -132,7 +132,7 @@ import trend_comparison
 import visualization
 import csv
 ```
-```
+```python
 class stock_integrate():
     def __init__(self,stcok_name,start_date,end_date):             #初始化此object
         self.start_date = start_date                               # 將開始取得股票的日期存為此class屬性
@@ -157,7 +157,7 @@ class stock_integrate():
         self.max_min_dtw_value = [0,2**31]                         # 將最大及最小dtw的數值存為此class屬性，前者為最大後者為最小
 ```
 
-```
+```python
     def add_stock(self,stcok_name):            # 輸入名稱增加股票
         new_stock_data = data_processor.stock_data(stcok_name,self.start_date,self.end_date)
         # 獲得股票資料   
@@ -188,12 +188,12 @@ class stock_integrate():
           self.similarities_matrix.append(compare)                  # 將這兩個股票的關係存進class的similarities_matrix屬性
 ```
 
-```
+```python
     def show_stock_chart(self):                        # 展示股價的散布點圖
         visualization.show_stock_chart(self.stock_date,self.all_stock_price,self.all_stock_name,self.stock_num)
 ```
 
-```
+```python
     def get_pearson_correlation(self,stock1_name,stock2_name):      # 獲得兩個股票的pearson的值
         stock1_index = -1                                           # 用來找股票名稱對應的收盤價存在哪個index
         stock2_index = -1
@@ -216,7 +216,7 @@ class stock_integrate():
         return round(pearson_val,3)
 ```
 
-```                                                                                                
+```python                                                                                           
    def get_dtw_distance(self,stock1_name,stock2_name):          # 獲得兩個股票的pearson的值
         stock1_index = -1                                       # 用來找股票名稱對應的收盤價存在哪個index
         stock2_index = -1
@@ -238,7 +238,7 @@ class stock_integrate():
         return round(dtw_value,3)
 ```
 
-```
+```python
     def print_similarities_matrix(self):        #印出pearson及dtw最大最小的值
         for row in self.similarities_matrix:
             print(row)
@@ -248,7 +248,7 @@ class stock_integrate():
         print("min dtw distance is",self.min_dtw_distance[0],"and",self.min_dtw_distance[1],self.max_min_dtw_value[1])
 ```
 
-```
+```python
     def create_similarities_csv(self):         #將每一個比較的結果輸出成csv檔出去
         with open('similarities.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
@@ -259,7 +259,7 @@ class stock_integrate():
             writer.writerow(["min dtw distance is",self.min_dtw_distance[0],"and",self.min_dtw_distance[1],self.max_min_dtw_value[1]])
 ```
 成果展示
-```
+```python
 stock_compare = stock_integrate('2330.TW','2021-01-01','2024-01-01')
 stock_compare.add_stock('2454.TW')
 stock_compare.add_stock('2002.TW')
