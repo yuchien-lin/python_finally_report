@@ -92,7 +92,8 @@ class stock_integrate():
                 print("your second stock is wrong name",end = " ")
             print("please input again!")
             return
-        dtw_value = trend_comparison.dtw_distance(self.all_stock_price[stock1_index][:50],self.all_stock_price[stock2_index])
+        dtw_value = trend_comparison.dtw_distance(self.all_stock_price[stock1_index][:(len(self.all_stock_price[stock1_index])//2)],self.all_stock_price[stock2_index])
+        #dtw 只傳一半的數據，因為dtw能算不同長度的數據
         return round(dtw_value,3)
 
     def print_similarities_matrix(self):        #印出pearson及dtw最大最小的值
