@@ -78,7 +78,7 @@ def dtw_distance(data1, data2):                             #計算DTW距離
     matrix_dtw[i, 0] = matrix_dtw[i-1, 0] + euclidean_distance(data1[i], data2[0])
     #第一列的每個元素累積的距離＝從上一個累積下來的累積距離矩陣＋這一個的距離矩陣(只有i變化，j固定在位置0）
 
-  for j in range(1, len_data2):     #初始化第一行
+  for j in range(1, len_data2):                             #初始化第一行
     matrix_dtw[0, j] = matrix_dtw[0, j-1] + euclidean_distance(data1[0], data2[j])
     #第一行的每個元素累積的距離＝從上一個累積下來的累積距離矩陣＋這一個的距離矩陣(只有j變化，i固定在位置0）
 
@@ -182,7 +182,7 @@ class stock_integrate():
 ```
 
 ```
-    def show_stock_chart(self):                                     # 展示股價的散布點圖
+    def show_stock_chart(self):                                        # 展示股價的散布點圖
         visualization.show_stock_chart(self.stock_date,self.all_stock_price,self.all_stock_name,self.stock_num)
 ```
 
@@ -242,7 +242,7 @@ class stock_integrate():
 ```
 
 ```
-    def create_similarities_csv(self):       #將每一個比較的結果輸出成csv檔出去
+    def create_similarities_csv(self):         #將每一個比較的結果輸出成csv檔出去
         with open('similarities.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerows(self.similarities_matrix)
