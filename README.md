@@ -135,24 +135,24 @@ import csv
 ```
 ```
 class stock_integrate():
-    def __init__(self,stcok_name,start_date,end_date):                            #初始化此object
-        self.start_date = start_date                                              # 將開始取得股票的日期存為此class屬性
-        self.end_date = end_date                                                  # 將結束取得股票的日期存為此class屬性
-        stock_data = data_processor.stock_data(stcok_name,start_date,end_date)    # 用data_processor中的stock_data產生的股票資訊的object
-        self.stock_num = 1                                                        # 讀取股票股票數量存成此class的屬性
-        self.stock_date = stock_data.stock_data_collect['date']                   # 將股票資訊object中的股價日期取出來並存成此class的屬性
-        self.all_stock_price = []                                                 # 用來存取每個收盤價以二維的形式存成此class的屬性
-        self.all_stock_name = []                                                  # 將每一個股票的名稱存進此class物件的list
-        self.all_stock_price.append(stock_data.stock_data_collect['close_price']) # 將起始股票的價格已list的形式存進價格的lsit形成二微陣列
-        self.all_stock_name.append(stcok_name)                                    # 將起始股價名稱存進list
-        self.similarities_matrix = []                                             # 用來存取每一個股票比較後pearson以及dtw的數值
+    def __init__(self,stcok_name,start_date,end_date):                                              #初始化此object
+        self.start_date = start_date                                                                # 將開始取得股票的日期存為此class屬性
+        self.end_date = end_date                                                                    # 將結束取得股票的日期存為此class屬性
+        stock_data = data_processor.stock_data(stcok_name,start_date,end_date)                      # 用data_processor中的stock_data產生的股票資訊的object
+        self.stock_num = 1                                                                          # 讀取股票股票數量存成此class的屬性
+        self.stock_date = stock_data.stock_data_collect['date']                                     # 將股票資訊object中的股價日期取出來並存成此class的屬性
+        self.all_stock_price = []                                                                   # 用來存取每個收盤價以二維的形式存成此class的屬性
+        self.all_stock_name = []                                                                    # 將每一個股票的名稱存進此class物件的list
+        self.all_stock_price.append(stock_data.stock_data_collect['close_price'])                   # 將起始股票的價格已list的形式存進價格的lsit形成二微陣列
+        self.all_stock_name.append(stcok_name)                                                      # 將起始股價名稱存進list
+        self.similarities_matrix = []                                                               # 用來存取每一個股票比較後pearson以及dtw的數值
         self.similarities_matrix.append(["stock1","stock2","pearson_correlation","dtw_distance"])   # 將比較的說明列打上去
-        self.max_pearson_correlation = []                   # 將最大pearson的兩個股票名稱存為此class屬性
-        self.min_pearson_correlation = []                   # 將最小pearson的兩個股票名稱存為此class屬性
-        self.max_min_pearson_value = [-1,1]                 # 將最大及最小pearson的數值存為此class屬性，前者為最大後者為最小
-        self.max_dtw_distance =[]                           # 將最大dtw的兩個股票名稱存為此class屬性
-        self.min_dtw_distance = []                          # 將最小dtw的兩個股票名稱存為此class屬性
-        self.max_min_dtw_value = [0,2**31]                  # 將最大及最小dtw的數值存為此class屬性，前者為最大後者為最小
+        self.max_pearson_correlation = []                                                           # 將最大pearson的兩個股票名稱存為此class屬性
+        self.min_pearson_correlation = []                                                           # 將最小pearson的兩個股票名稱存為此class屬性
+        self.max_min_pearson_value = [-1,1]                                                         # 將最大及最小pearson的數值存為此class屬性，前者為最大後者為最小
+        self.max_dtw_distance =[]                                                                   # 將最大dtw的兩個股票名稱存為此class屬性
+        self.min_dtw_distance = []                                                                  # 將最小dtw的兩個股票名稱存為此class屬性
+        self.max_min_dtw_value = [0,2**31]                                                          # 將最大及最小dtw的數值存為此class屬性，前者為最大後者為最小
 ```
 
 ```
