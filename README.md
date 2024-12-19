@@ -236,6 +236,7 @@ class stock_integrate():
             print("please input again!")
             return
         dtw_value = trend_comparison.dtw_distance(self.all_stock_price[stock1_index][:(len(self.all_stock_price[stock1_index])//2)],self.all_stock_price[stock2_index])
+        #dtw 取值只傳一半的數據
         return round(dtw_value,3)
 ```
 印出所有股票互相的 pearson correlation 以及 dtw distance 並印出pearson及dtw最大最小的值
