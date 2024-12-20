@@ -244,8 +244,8 @@ class stock_integrate():
     def print_similarities_matrix(self):        #印出pearson及dtw最大最小的值
         for row in self.similarities_matrix:
             print(row)
-        print("max pesrson correltion is",self.max_pearson_correlation[0],"and",self.max_pearson_correlation[1],self.max_min_pearson_value[0])
-        print("min pesrson correltion is",self.min_pearson_correlation[0],"and",self.min_pearson_correlation[1],self.max_min_pearson_value[1])
+        print("max pearson correltion is",self.max_pearson_correlation[0],"and",self.max_pearson_correlation[1],self.max_min_pearson_value[0])
+        print("min pearson correltion is",self.min_pearson_correlation[0],"and",self.min_pearson_correlation[1],self.max_min_pearson_value[1])
         print("max dtw distance is",self.max_dtw_distance[0],"and",self.max_dtw_distance[1],self.max_min_dtw_value[0])
         print("min dtw distance is",self.min_dtw_distance[0],"and",self.min_dtw_distance[1],self.max_min_dtw_value[1])
 ```
@@ -255,8 +255,8 @@ class stock_integrate():
         with open('similarities.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerows(self.similarities_matrix)
-            writer.writerow(["max pesrson correltion is",self.max_pearson_correlation[0],"and",self.max_pearson_correlation[1],self.max_min_pearson_value[0]])
-            writer.writerow(["min pesrson correltion is",self.min_pearson_correlation[0],"and",self.min_pearson_correlation[1],self.max_min_pearson_value[1]])
+            writer.writerow(["max pearson correltion is",self.max_pearson_correlation[0],"and",self.max_pearson_correlation[1],self.max_min_pearson_value[0]])
+            writer.writerow(["min pearson correltion is",self.min_pearson_correlation[0],"and",self.min_pearson_correlation[1],self.max_min_pearson_value[1]])
             writer.writerow(["max dtw distance is",self.max_dtw_distance[0],"and",self.max_dtw_distance[1],self.max_min_dtw_value[0]])
             writer.writerow(["min dtw distance is",self.min_dtw_distance[0],"and",self.min_dtw_distance[1],self.max_min_dtw_value[1]])
 ```
@@ -270,5 +270,6 @@ stock_compare.print_similarities_matrix()
 stock_compare.create_similarities_csv()
 
 ```
-![image](https://github.com/user-attachments/assets/ad90003e-bfd1-415f-9185-cfbf9786968e)
+![image](https://github.com/user-attachments/assets/1b4e49e9-b168-417e-824d-3040169ac1cd)
+
 
