@@ -169,7 +169,7 @@ class stock_integrate():
         for order in range(self.stock_num-1):                       # 進行比較股價的pearson及dtw
           compare = [self.all_stock_name[order],stcok_name]         # 先將要比的股價名稱存進list
           pearson_value = self.get_pearson_correlation(self.all_stock_name[order],stcok_name)
-        # 獲得pearson值
+         # 獲得pearson值
           if(pearson_value > self.max_min_pearson_value[0]):        # 改變最大值，並將股票名稱存入
               self.max_min_pearson_value[0] = pearson_value                   
               self.max_pearson_correlation = compare                      
