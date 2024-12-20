@@ -270,4 +270,5 @@ stock_compare.print_similarities_matrix()
 stock_compare.create_similarities_csv()
 
 ```
-![Image](https://github.com/user-attachments/assets/7ef0f5c7-4a7a-4367-bec3-869671b1429d)
+![image](https://github.com/user-attachments/assets/ad90003e-bfd1-415f-9185-cfbf9786968e)
+
