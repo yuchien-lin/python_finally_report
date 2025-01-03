@@ -211,6 +211,7 @@ class stock_integrate():
             else:                                                                   # 只有第二個是錯的
                 print("your second stock is wrong name",end = " ")
             print("please input again!")
+            return -1,-1
         return stock1_index,stock2_index                                            # 回傳tuple型態的兩個index
 ```
 得到pearson correlation的方法
@@ -224,7 +225,7 @@ class stock_integrate():
 ```
 得到dtw distance的方法
 ```python                                                                                           
-   def get_dtw_distance(self,stock1_name,stock2_name):                                                                                                                  # 獲得兩個股票的pearson的值
+   def get_dtw_distance(self,stock1_name,stock2_name):                                                                                                                  # 獲得兩個股票的dtw的值
         stock1_index,stock2_index = self.find_index(stock1_name,stock2_name)                                                                                            # 獲得兩個股票的index
         if(stock1_index == -1):                                                                                                                                         # 找不到這隻股票
           return 0
