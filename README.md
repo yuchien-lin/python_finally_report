@@ -261,9 +261,11 @@ stock_compare.add_stock('2002.TW')
 stock_compare.show_stock_chart()
 stock_compare.print_similarities_matrix()
 stock_compare.create_similarities_csv()
-
 ```
 ![image](https://github.com/user-attachments/assets/1b4e49e9-b168-417e-824d-3040169ac1cd)
+
+![擷取](https://github.com/user-attachments/assets/4c0ad8dc-c7cc-4568-a2d8-e04451627ed8)
+
 > ### 結論
 
 **結論:**
