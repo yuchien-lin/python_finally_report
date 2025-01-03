@@ -193,50 +193,42 @@ class stock_integrate():
     def show_stock_chart(self):                        # 展示股價的散布點圖
         visualization.show_stock_chart(self.stock_date,self.all_stock_price,self.all_stock_name,self.stock_num)
 ```
-得到pearson correlation的方法
+得到兩個股票index的方法
 ```python
-    def get_pearson_correlation(self,stock1_name,stock2_name):      # 獲得兩個股票的pearson的值
-        stock1_index = -1                                           # 用來找股票名稱對應的收盤價存在哪個index
+    def find_index(self,stock1_name,stock2_name):
+        stock1_index = -1                                                           # 用來找股票名稱對應的收盤價存在哪個index
         stock2_index = -1
-        for name_order in range(self.stock_num):                    # 遍布每一個名字來尋找
-            if(self.all_stock_name[name_order] == stock1_name):     # 相同名稱就將位置存起來
+        for name_order in range(self.stock_num):                              `     # 遍布每一個名字來尋找
+            if(self.all_stock_name[name_order] == stock1_name):                     # 相同名稱就將位置存起來
                 stock1_index = name_order
             elif(self.all_stock_name[name_order] == stock2_name):
                 stock2_index = name_order
-        if(stock1_index == -1 or stock1_index == -1):               # 其中一個股票名稱有誤
-            if(stock1_index == -1 and stock2_index == -1):          # 兩個都是錯的
+        if(stock1_index == -1 or stock1_index == -1):                               # 其中一個股票名稱有誤
+            if(stock1_index == -1 and stock2_index == -1):                          # 兩個都是錯的
                 print("your first stock and second stock is wrong name",end = " ")
-            elif(stock1_index == -1):                               # 第一個是錯的
+            elif(stock1_index == -1):                                               # 第一個是錯的
                 print("your first stock is wrong name",end = " ")
-            else:                                                   # 只有第二個是錯的
+            else:                                                                   # 只有第二個是錯的
                 print("your second stock is wrong name",end = " ")
             print("please input again!")
-            return                                    
-        pearson_val = trend_comparison.pearson_correlation(self.all_stock_price[stock1_index],self.all_stock_price[stock2_index])
-        #透過trend_comparison內的pearson_correlation來獲得pearson的值
+        return stock1_index,stock2_index                                            # 回傳tuple型態的兩個index
+```
+得到pearson correlation的方法
+```python
+    def get_pearson_correlation(self,stock1_name,stock2_name):                                                                   # 獲得兩個股票的pearson的值
+        stock1_index,stock2_index = self.find_index(stock1_name,stock2_name)                                                     # 獲得兩個股票的index
+        if(stock1_index == -1):                                                                                                  # 找不到這隻股票
+          return 0
+        pearson_val = trend_comparison.pearson_correlation(self.all_stock_price[stock1_index],self.all_stock_price[stock2_index])#透過trend_comparison內的pearson_correlation來獲得pearson的值
         return round(pearson_val,3)
 ```
 得到dtw distance的方法
 ```python                                                                                           
-   def get_dtw_distance(self,stock1_name,stock2_name):          # 獲得兩個股票的pearson的值
-        stock1_index = -1                                       # 用來找股票名稱對應的收盤價存在哪個index
-        stock2_index = -1
-        for name_order in range(self.stock_num):                # 遍布每一個名字來尋找
-            if(self.all_stock_name[name_order] == stock1_name): # 相同名稱就將位置存起來
-                stock1_index = name_order
-            elif(self.all_stock_name[name_order] == stock2_name):
-                stock2_index = name_order
-        if(stock1_index == -1 or stock1_index == -1):           # 其中一個股票名稱有誤
-            if(stock1_index == -1 and stock2_index == -1):      # 兩個都是錯的
-                print("your first stock and second stock is wrong name",end = " ")
-            elif(stock1_index == -1):                           # 第一個是錯的
-                print("your first stock is wrong name",end = " ")
-            else:                                               # 只有第二個是錯的
-                print("your second stock is wrong name",end = " ")
-            print("please input again!")
-            return
-        dtw_value = trend_comparison.dtw_distance(self.all_stock_price[stock1_index][:(len(self.all_stock_price[stock1_index])//2)],self.all_stock_price[stock2_index])
-        #dtw 只傳一半的數據，因為dtw能算不同長度的數據
+   def get_dtw_distance(self,stock1_name,stock2_name):                                                                                                                  # 獲得兩個股票的pearson的值
+        stock1_index,stock2_index = self.find_index(stock1_name,stock2_name)                                                                                            # 獲得兩個股票的index
+        if(stock1_index == -1):                                                                                                                                         # 找不到這隻股票
+          return 0
+        dtw_value = trend_comparison.dtw_distance(self.all_stock_price[stock1_index][:(len(self.all_stock_price[stock1_index])//2)],self.all_stock_price[stock2_index]) # 找dtw的數值
         return round(dtw_value,3)
 ```
 印出所有股票互相的 pearson correlation 以及 dtw distance 並印出pearson及dtw最大最小的值
