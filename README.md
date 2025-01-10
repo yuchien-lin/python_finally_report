@@ -276,7 +276,8 @@ stock_compare.create_similarities_csv()
 ![image](https://github.com/user-attachments/assets/3690fb08-f1d7-4d40-ac4f-232b355c3f3f)
 
 
-![image](https://github.com/user-attachments/assets/66462a5c-4d84-4a29-8aeb-260b27f02382)
+![image](https://github.com/user-attachments/assets/2b5256ea-56d2-4d85-b35c-33ffd63ec618)
+
 
 
 
