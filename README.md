@@ -160,7 +160,7 @@ class stock_integrate():
         self.dtw_sqrt = 0                                          # 用來儲存所有原始的dtw平方的和
         self.dtw_sum = 0                                           # 用來儲存dtw的和
 ```
-增加股票的方法
+增加股票的方法，同時計算pearson以及標準化後的dtw值
 ```python
     def add_stock(self,stcok_name):                                                              # 輸入名稱增加股票
         new_stock_data = data_processor.stock_data(stock_name,self.start_date,self.end_date)     # 獲得股票資料
