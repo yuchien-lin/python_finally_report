@@ -21,9 +21,9 @@ class stock_integrate():
         self.max_dtw_distance =[]                                                       # 將最大dtw的兩個股票名稱存為此class屬性
         self.min_dtw_distance = []                                                      # 將最小dtw的兩個股票名稱存為此class屬性
         self.max_min_dtw_value = [0,2**31]                                              # 將最大及最小dtw的數值存為此class屬性，前者為最大後者為最小
-        self.all_dtw = []
-        self.dtw_sqrt = 0
-        self.dtw_sum = 0
+        self.all_dtw = []                                                               # 用來儲存所有原始的dtw
+        self.dtw_sqrt = 0                                                               # 用來儲存所有原始的dtw平方的和
+        self.dtw_sum = 0                                                                # 用來儲存dtw的和
 
 
         def add_stock(self,stcok_name):                                                              # 輸入名稱增加股票
