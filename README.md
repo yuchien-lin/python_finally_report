@@ -273,9 +273,11 @@ stock_compare.show_stock_chart()
 stock_compare.print_similarities_matrix()
 stock_compare.create_similarities_csv()
 ```
-![image](https://github.com/user-attachments/assets/f84bf5b5-862d-4ac9-a2d3-967be96f6fe3)
+![image](https://github.com/user-attachments/assets/3690fb08-f1d7-4d40-ac4f-232b355c3f3f)
 
-![image](https://github.com/user-attachments/assets/86af87da-81ea-41d4-8e6f-c9a080643e18)
+
+![image](https://github.com/user-attachments/assets/66462a5c-4d84-4a29-8aeb-260b27f02382)
+
 
 
 
